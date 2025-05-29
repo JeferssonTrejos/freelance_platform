@@ -22,7 +22,7 @@ class UpdateSkillRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:skills,name,' . $this->skill->id,
+            'name' => 'required|string|max:255|unique:mongodb.skills,name,' . $this->skill->_id . ',_id',
             'category' => 'required|string|max:255',
         ];
     }

@@ -22,7 +22,7 @@ class StoreSkillRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:skills,name',
+            'name' => 'required|string|max:255|unique:mongodb.skills,name',
             'category' => 'required|string|max:255',
         ];
     }
