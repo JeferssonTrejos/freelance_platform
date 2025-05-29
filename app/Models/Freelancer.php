@@ -21,11 +21,4 @@ class Freelancer extends Model
         'rates',
     ];
 
-    protected $casts = [
-        'portfolio' => 'array',
-        'experience' => 'array',
-        'education' => 'array',
-        'rates' => 'array',
-        
-    ];
 }
