@@ -11,18 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->array('portfolio');       // Array de objetos
-            $table->array('experience');      // Array de objetos
-            $table->array('education');       // Array de objetos
-            $table->array('certifications');  // Array de strings
-            $table->array('languages');       // Array de strings
-            $table->string('availability');
-            $table->array('rates');           // Array de objetos
-            $table->array('skill_ids');       // Referencias a otra colección
-            $table->array('proposal_ids');    // Referencias a otra colección
-            $table->timestamps();
+            
         });
     }
 

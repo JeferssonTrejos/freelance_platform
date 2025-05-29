@@ -15,15 +15,14 @@ class FreelancerResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->_id,
             'name' => $this->name,
-            'portfolio' => PortfolioResource::collection(collect($this->portfolio)),
-            'experience' => $this->experience,
-            'education' => $this->education,
+            'portfolio' => PortfolioResource::collection($this->portfolio),
+            'experience' => ExperienceResource::collection($this->experience),
+            'education' => EducationResource::collection($this->education),
             'certifications' => $this->certifications,
             'languages' => $this->languages,
             'availability' => $this->availability,
-            'rates' => $this->rates,
+            'rates' => RateResource::collection($this->rates),
         ];
     }
 }

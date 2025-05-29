@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PortfolioResource extends JsonResource
+class EducationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,10 @@ class PortfolioResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
         return [
-            'title' => $this['title'],
-            'description' => $this['description'],
-            'url' => $this['url']
-        ];  
+            'degree' => $this["degree"],
+            'university' => $this["university"],
+        ];
     }
 }
