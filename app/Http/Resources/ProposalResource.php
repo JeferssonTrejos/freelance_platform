@@ -16,10 +16,16 @@ class ProposalResource extends JsonResource
     {
         return [
             'id' => $this->_id,
+            'freelancer_id' => $this->freelancer_id,
             'project_id' => $this->project_id,
-            'cover_letter' => $this->cover_letter,
-            'bid_amount' => $this->bid_amount,
-            'status' => $this->status
+            'approach' => $this->approach,
+            'timeline_details' => $this->timeline_details,
+            'budget_breakdown' => $this->budget_breakdown,
+            'examples' => $this->examples,
+            'terms' => $this->terms,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
