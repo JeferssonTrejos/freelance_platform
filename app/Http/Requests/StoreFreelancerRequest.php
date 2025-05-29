@@ -45,3 +45,6 @@ class StoreFreelancerRequest extends FormRequest
         ];
     }
 }
+
+
+
