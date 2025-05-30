@@ -22,18 +22,19 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'client_id' => 'required|string',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'budget' => 'required|numeric|min:0',
             'expected_timeline' => 'required|string',
             'specific_deliverables' => 'nullable|array',
-            'specific_deliverables.*.deliverable' => 'nullable|string',
+            'specific_deliverables.*' => 'nullable|string',
             'evaluation_criteria' => 'required|array',
-            'evaluation_criteria.*.criteria' => 'string',
+            'evaluation_criteria.*' => 'string',
             'required_skills' => 'required|array',
-            'required_skills.*.skill' => 'string',
-            'proposals' => 'nullable|array',
-            'proposals.*.id' => 'nullable|string',
+            'required_skills.*' => 'string',
+            'project_proposals' => 'nullable|array',
+            'project_proposals.*.id' => 'nullable|string',
         ];
     }
 }

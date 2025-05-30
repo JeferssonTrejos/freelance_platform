@@ -19,7 +19,7 @@ class Project extends Model
         'specific_deliverables',
         'evaluation_criteria',
         'required_skills',
-        'Project_proposals',
+        'project_proposals',
     ];
 
     // Relación con clientes

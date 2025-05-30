@@ -15,6 +15,7 @@ class FreelancerResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => (string) $this->_id,
             'name' => $this->name,
             'portfolio' => PortfolioResource::collection($this->portfolio),
             'experience' => ExperienceResource::collection($this->experience),

@@ -22,6 +22,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'client_id' => 'required|string',
             'title' => 'string|max:255',
             'description' => 'string',
             'budget' => 'numeric|min:0',
@@ -32,7 +33,8 @@ class UpdateProjectRequest extends FormRequest
             'evaluation_criteria.*.criteria' => 'string',
             'required_skills' => 'array',
             'required_skills.*.skill' => 'string',
-            'proposals' => 'array',
+            'project_proposals' => 'nullable|array',
+            'project_proposals.*.id' => 'nullable|string',
         ];
     }
 }

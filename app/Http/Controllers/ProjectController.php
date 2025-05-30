@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
@@ -18,9 +19,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return (ProjectResource::collection(Project::with(['proposals', 'client'])->paginate(4)))
+        return (ProjectResource::collection(Project::with(['client'])->paginate(10)))
             ->response()
             ->setStatusCode(Response::HTTP_OK);
+
     }
 
     /**
@@ -28,7 +30,7 @@ class ProjectController extends Controller
      *
      * Crea un nuevo proyecto.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
         $project = Project::create($request->validated());
 
@@ -43,8 +45,11 @@ class ProjectController extends Controller
      * Muestra un producto por su Id
      *
      */
-    public function show(Project $project)
+    public function show($id)
     {
+        $project = Project::with(['client'])->findOrFail($id);
+
+
         return (new ProjectResource($project))
             ->response()
             ->setStatusCode(Response::HTTP_OK);

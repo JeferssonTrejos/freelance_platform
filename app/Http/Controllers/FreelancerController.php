@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 
 class FreelancerController extends Controller
 {
-    // Listar todos (con paginación)
+    // Listar todos los freelancers
     public function index()
     {
         $freelancers = Freelancer::paginate(10);

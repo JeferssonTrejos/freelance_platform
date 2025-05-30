@@ -15,16 +15,17 @@ class ProjectResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => (string) $this->_id,
+            'client_id' => $this->client_id,
             'client' => new ClientResource($this->whenLoaded('client')),
             'title' => $this->title,
             'description' => $this->description,
             'budget' => $this->budget,
             'expected_timeline' => $this->expected_timeline,
-            'specific_deliverables' => SpecificDeliverablesResource::collection($this->specific_deliverables),
-            'evaluation_criteria' => EvaluationCriteriaResource::collection($this->evaluation_criteria),
-            'required_skills' => RequiredSkillsResource::collection($this->required_skills),
-            'Project_proposals' => ProjectProposalsResource::collection($this->whenLoaded('proposals')),
-
+            'specific_deliverables' => $this->specific_deliverables,
+            'evaluation_criteria' => $this->evaluation_criteria,
+            'required_skills' => $this->required_skills,
+            'project_proposals' => $this->project_proposals,
         ];
     }
 }
