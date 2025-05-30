@@ -40,7 +40,7 @@ class StoreFreelancerRequest extends FormRequest
             'languages.*' => 'string|max:50',
             'availability' => 'required|in:full-time,part-time,unavailable',
             'rates' => 'array',
-            'rates.*.type' => 'required|string',
+            'rates.*.service_id' => 'required|exists:services,id',
             'rates.*.amount' => 'required|numeric|min:0',
         ];
     }

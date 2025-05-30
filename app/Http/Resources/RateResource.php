@@ -14,8 +14,14 @@ class RateResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $service = null;
+        if (isset($this["service_id"])) {
+            $serviceModel = app(\App\Models\Service::class)::find($this["service_id"]);
+            $service = $serviceModel ? new \App\Http\Resources\ServiceResource($serviceModel) : null;
+        }
         return [
-            'type' => $this["type"],
+            'service_id' => $this["service_id"] ?? null,
+            'service' => $service,
             'amount' => $this["amount"],
         ];
     }

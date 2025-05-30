@@ -40,7 +40,7 @@ class UpdateFreelancerRequest extends FormRequest
             'languages.*' => 'string|max:50',
             'availability' => 'in:full-time,part-time,unavailable',
             'rates' => 'array',
-            'rates.*.type' => 'string',
+            'rates.*.service_id' => 'required|exists:services,id',
             'rates.*.amount' => 'numeric|min:0',
             'skill_ids' => 'array',
             'skill_ids.*' => 'exists:skills,_id',

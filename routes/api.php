@@ -27,6 +27,5 @@ Route::apiResource('skills', SkillController::class);
 
 Route::apiResource('reviews', ReviewController::class);
 
-Route::apiResource('projects', ProjectController::class);
-
+Route::apiResource('milestones', MilestoneController::class);
 
