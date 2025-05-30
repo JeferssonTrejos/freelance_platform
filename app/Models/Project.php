@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
+use MongoDB\Laravel\Relations\HasMany;
 
 class Project extends Model
 {
@@ -10,17 +11,26 @@ class Project extends Model
     protected $collection = 'projects';
 
     protected $fillable = [
+        'client_id',
         'title',
         'description',
         'budget',
-        'timeline',
-        'deliverables',
+        'expected_timeline',
+        'specific_deliverables',
         'evaluation_criteria',
-        'skills',
+        'required_skills',
+        'Project_proposals',
     ];
 
+    // Relación con clientes
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    // Relación con las propuestas
+    public function proposalsData(): HasMany
+    {
+        return $this->hasMany(Proposal::class);
     }
 }
