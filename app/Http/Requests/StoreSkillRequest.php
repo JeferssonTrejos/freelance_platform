@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMilestoneRequest extends FormRequest
+class StoreSkillRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,8 @@ class StoreMilestoneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'proposal_id' => 'required|string',
-            'title' => 'required|string|max:255',
-            'due_date' => 'required|string',
-            'deliverables' => 'nullable|array',
-            'status' => 'nullable|string|in:pending,in_progress,completed,cancelled'
+            'name' => 'required|string|max:255|unique:mongodb.skills,name',
+            'category' => 'required|string|max:255',
         ];
     }
 }

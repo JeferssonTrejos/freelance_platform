@@ -23,10 +23,9 @@ class UpdateMilestoneRequest extends FormRequest
     {
         return [
             'title' => 'sometimes|string|max:255',
-            'due_date' => 'sometimes|date',
+            'due_date' => 'sometimes|string',
             'deliverables' => 'sometimes|array',
             'status' => 'sometimes|string|in:pending,in_progress,completed,cancelled',
-            'payment_id' => 'sometimes|nullable|string|exists:payments,_id',
         ];
     }
 }

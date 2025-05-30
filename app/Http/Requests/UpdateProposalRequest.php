@@ -11,7 +11,7 @@ class UpdateProposalRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class UpdateProposalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // Todos los campos son opcionales en update (sometimes)
+            
             'approach' => 'sometimes|string|min:50|max:5000',
             'timeline_details' => 'sometimes|string|min:10|max:500',
             

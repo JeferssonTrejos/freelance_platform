@@ -22,13 +22,11 @@ class Project extends Model
         'project_proposals',
     ];
 
-    // Relación con clientes
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
 
-    // Relación con las propuestas
     public function proposalsData(): HasMany
     {
         return $this->hasMany(Proposal::class);

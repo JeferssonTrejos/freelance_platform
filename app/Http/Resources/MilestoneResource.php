@@ -15,15 +15,12 @@ class MilestoneResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->_id,
+            'id' => (string) $this->_id,
             'proposal_id' => $this->proposal_id,
             'title' => $this->title,
             'due_date' => $this->due_date,
             'deliverables' => $this->deliverables ?? [],
             'status' => $this->status,
-            'payment_id' => $this->payment_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ];
     }
 }

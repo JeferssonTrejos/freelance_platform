@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
+
 
 class Proposal extends Model
 {
@@ -14,9 +15,9 @@ class Proposal extends Model
         'project_id',
         'approach',
         'timeline_details',
-        'budget_breakdown', // Array nativo en MongoDB
-        'examples',         // Array nativo en MongoDB
-        'terms',           // Array nativo en MongoDB
+        'budget_breakdown',
+        'examples',
+        'terms',
         'status',
     ];
 
@@ -27,11 +28,11 @@ class Proposal extends Model
 
     public function freelancer()
     {
-        return $this->belongsTo(Freelancer::class, 'freelancer_id', '_id');
+        return $this->belongsTo(Freelancer::class);
     }
 
     public function project()
     {
-        return $this->belongsTo(Project::class, 'project_id', '_id');
+        return $this->belongsTo(Project::class);
     }
 }

@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use MongoDB\Laravel\Eloquent\Model;
-use App\Models\ProjectProposal;
-use App\Models\Payment;
 
 class Milestone extends Model
 {
@@ -17,26 +15,16 @@ class Milestone extends Model
         'due_date',
         'deliverables',
         'status',
-        'payment_id',
     ];
 
-    protected $casts = [
-        'deliverables' => 'array',
-        'due_date' => 'datetime',
-    ];
-
-    public function getRouteKeyName()
-    {
-        return '_id';
-    }
 
     public function proposal()
     {
-        return $this->belongsTo(ProjectProposal::class, 'proposal_id', '_id');
+        return $this->belongsTo(Proposal::class);
     }
 
     public function payment()
     {
-        return $this->belongsTo(Payment::class, 'payment_id', '_id');
+        return $this->belongsTo(Payment::class);
     }
 }

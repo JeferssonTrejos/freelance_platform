@@ -22,8 +22,8 @@ class StoreProposalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'freelancer_id' => 'required|string|min:24|max:24', // ObjectId de MongoDB
-            'project_id' => 'required|string|min:24|max:24',   // ObjectId de MongoDB
+            'freelancer_id' => 'required|string|min:24|max:24',
+            'project_id' => 'required|string|min:24|max:24',   
             'approach' => 'required|string|min:50|max:5000',
             'timeline_details' => 'required|string|min:10|max:500',
             

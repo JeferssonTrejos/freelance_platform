@@ -21,4 +21,13 @@ class Freelancer extends Model
         'rates',
     ];
 
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function proposals()
+    {
+        return $this->hasMany(Proposal::class);
+    }
 }

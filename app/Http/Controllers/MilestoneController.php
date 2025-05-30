@@ -11,43 +11,28 @@ use App\Models\Milestone;
 
 class MilestoneController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $milestones = Milestone::query();
 
-        if ($request->has('proposal_id')) {
-            $milestones->where('proposal_id', $request->proposal_id);
-        }
-
-        if ($request->has('status')) {
-            $milestones->where('status', $request->status);
-        }
-
-        return (MilestoneResource::collection($milestones->paginate(10)))
+        $milestones = Milestone::paginate(10);
+        ;
+        return MilestoneResource::collection($milestones)
             ->response()
             ->setStatusCode(Response::HTTP_OK);
     }
 
-    public function store(StoreMilestoneRequest $request) // ✅ Sin espacio extra
+    public function store(StoreMilestoneRequest $request)
     {
-        $data = $request->validated();
-        
-        if (!isset($data['status'])) {
-            $data['status'] = 'pending';
-        }
-        if (!isset($data['deliverables'])) {
-            $data['deliverables'] = [];
-        }
 
-        $milestone = Milestone::create($data);
-
+        $milestone = Milestone::create($request->validated());
         return (new MilestoneResource($milestone))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
     }
 
-    public function show(Request $request, Milestone $milestone)
+    public function show($id)
     {
+        $milestone = Milestone::find($id);
         return (new MilestoneResource($milestone))
             ->response()
             ->setStatusCode(Response::HTTP_OK);
@@ -55,8 +40,11 @@ class MilestoneController extends Controller
 
     public function update(UpdateMilestoneRequest $request, Milestone $milestone)
     {
-        $milestone->update($request->validated());
-
+        $data = $request->validated();
+        if (isset($data['deliverables']) && !is_array($data['deliverables'])) {
+            $data['deliverables'] = [$data['deliverables']];
+        }
+        $milestone->update($data);
         return (new MilestoneResource($milestone))
             ->response()
             ->setStatusCode(Response::HTTP_OK);
