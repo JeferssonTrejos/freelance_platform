@@ -6,6 +6,7 @@ use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\MilestoneController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
