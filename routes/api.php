@@ -5,6 +5,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\MilestoneController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Route::apiResource('projects', ProjectController::class);
 Route::apiResource('skills', SkillController::class);
 
 Route::apiResource('reviews', ReviewController::class);
-Route::apiResource('projects', ProjectController::class);
+// Route::apiResource('projects', ProjectController::class);
+Route::apiResource('milestones', MilestoneController::class);
 
 
